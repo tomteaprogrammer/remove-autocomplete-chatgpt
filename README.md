@@ -29,5 +29,3 @@ javascript:(function(){const removeUl=()=>{document.querySelectorAll('ul.w-full.
 * **ChatGPT Modified**: Removes any `<ul>` with `w-full flex-col` (more robust, but broader).
 
 ---
-
-💡 Tip: GitHub READMEs can’t run bookmarklets directly. If you want **drag-to-bookmarks buttons**, publish your HTML file (e.g., `chatgpt_simple_bookmarklets_with_instructions.html`) via **GitHub Pages**.
