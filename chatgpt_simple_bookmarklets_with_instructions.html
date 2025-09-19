@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatGPT Simple Bookmarklets</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h2>ChatGPT Simple Bookmarklets</h2>
+  <p>
+    To install, drag one of the buttons below to your bookmarks bar (or right-click → “Bookmark this link”).
+    Once saved, clicking the bookmark on the target site will remove the unwanted &lt;ul&gt; and keep it gone.
+  </p>
+
+  <!-- Strict Selector -->
+  <a href="javascript:(function(){const removeUl=()=>{document.querySelectorAll('ul.w-full.flex-col.p-2\\.5.max-sm\\:px-0.flex').forEach(el=>el.remove());};removeUl();new MutationObserver(removeUl).observe(document.body,{childList:true,subtree:true});})();"
+     style="display:inline-block;margin:8px;padding:10px 16px;background:#007bff;color:#fff;border-radius:6px;text-decoration:none;">
+     ChatGPT Simple (Strict)
+  </a>
+
+  <!-- Loose Selector -->
+  <a href="javascript:(function(){const removeUl=()=>{document.querySelectorAll('ul.w-full.flex-col').forEach(el=>el.remove());};removeUl();new MutationObserver(removeUl).observe(document.body,{childList:true,subtree:true});})();"
+     style="display:inline-block;margin:8px;padding:10px 16px;background:#28a745;color:#fff;border-radius:6px;text-decoration:none;">
+     ChatGPT Simple (Loose)
+  </a>
+
+  <p style="margin-top:20px;color:#444;">
+    <strong>Strict</strong>: Only removes ULs with the full class list.<br>
+    <strong>Loose</strong>: Removes any UL with <code>w-full flex-col</code> (more robust, but broader).
+  </p>
+</body>
+</html>
