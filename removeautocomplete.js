@@ -1,0 +1,1 @@
+javascript:(function(){const removeUl=()=>{document.querySelectorAll('ul.w-full.flex-col.p-2\\.5.max-sm\\:px-0.flex').forEach(el=>el.remove());};removeUl();new MutationObserver(removeUl).observe(document.body,{childList:true,subtree:true});})();
