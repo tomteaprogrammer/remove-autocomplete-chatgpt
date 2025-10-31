@@ -3,26 +3,35 @@
 // autocomplete list
 const AUTOCOMPLETE_SEL = 'ul.w-full.flex-col.p-2\\.5.max-sm\\:px-0.flex';
 
-// hero text (just the text div, not the whole container)
-const HERO_TEXT_SEL =
-  '#thread > div > div.relative.basis-auto.flex-col.shrink.flex.flex-col.justify-end.max-sm\\:grow.max-sm\\:justify-center.sm\\:min-h-\\[42svh\\] > div > div.mb-7.hidden.text-center.sm\\:block';
+// the exact line you saw
+const TARGET_TEXT_1 = 'What’s on the agenda today?';
+const TARGET_TEXT_2 = "What's on the agenda today?"; // fallback with straight quote
 
-// inject css early
 (function injectCSS() {
   const style = document.createElement('style');
   style.textContent = `
-    ${AUTOCOMPLETE_SEL},
-    ${HERO_TEXT_SEL} {
+    ${AUTOCOMPLETE_SEL} {
+      display: none !important;
+    }
+    .px-1.text-pretty.whitespace-pre-wrap {
+      /* we will filter in JS, this stops the flash */
       display: none !important;
     }
   `;
   (document.head || document.documentElement).appendChild(style);
 })();
 
-// fallback JS cleanup
 function hideStuff() {
+  // remove autocomplete
   document.querySelectorAll(AUTOCOMPLETE_SEL).forEach(el => el.remove());
-  document.querySelectorAll(HERO_TEXT_SEL).forEach(el => el.remove());
+
+  // remove only the matching prompt text
+  document.querySelectorAll('.px-1.text-pretty.whitespace-pre-wrap').forEach(el => {
+    const t = (el.textContent || '').trim();
+    if (t === TARGET_TEXT_1 || t === TARGET_TEXT_2) {
+      el.remove();
+    }
+  });
 }
 
 hideStuff();

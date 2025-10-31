@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT: remove autocomplete",
-  "version": "1.1",
+  "version": "1",
   "description": "Removes the ChatGPT autocomplete suggestion panel and the top hero block.",
   "content_scripts": [
     {
